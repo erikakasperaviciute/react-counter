@@ -14,6 +14,14 @@ function CounterPage() {
 
   return (
     <>
+      <input
+        type="number"
+        value={num}
+        max="10"
+        min="1"
+        onChange={(e) => setNum(e.target.value)}
+      ></input>
+
       <h3>{num}</h3>
       <button onClick={() => numHandler(-5)} disabled={num < 6}>
         -5
