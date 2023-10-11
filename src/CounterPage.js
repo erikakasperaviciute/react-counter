@@ -8,7 +8,8 @@ function CounterPage() {
   const num2Arr = [-6, -5, -3, -2, -1, 1, 2, 3, 5, 6];
 
   const numHandler = (num2) => {
-    setNum(num + num2);
+    // setNum(num + num2);
+    setNum((prevNum) => prevNum + num2);
   };
 
   const resetHandler = () => {
@@ -26,7 +27,7 @@ function CounterPage() {
         value={num}
         max="10"
         min="1"
-        onChange={(e) => setNum(e.target.value)}
+        onChange={(e) => setNum(Number(e.target.value))}
       ></input>
       <h3 style={numberColor}>{num}</h3>
       {num2Arr.map((number, index) => (
