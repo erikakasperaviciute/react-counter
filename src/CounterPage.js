@@ -4,6 +4,7 @@ function CounterPage() {
   const initialValue = 5;
   const maxValue = 10;
   const [num, setNum] = useState(initialValue);
+  const [grades, setGrades] = useState([10, 5]);
 
   const num2Arr = [-6, -5, -3, -2, -1, 1, 2, 3, 5, 6];
 
@@ -18,6 +19,16 @@ function CounterPage() {
 
   const numberColor = {
     color: num < 5 ? "red" : "green",
+  };
+
+  // const grades = [];
+
+  const addGradeHandler = () => {
+    setGrades((prevState) => {
+      const newState = [...prevState];
+      newState.unshift(num);
+      return newState;
+    });
   };
 
   return (
@@ -44,6 +55,19 @@ function CounterPage() {
       ))}
 
       <button onClick={resetHandler}>Reset</button>
+
+      <button onClick={addGradeHandler}>AddGrade</button>
+      <div>
+        <h4>Grades:</h4>
+        <ul>
+          {grades.map((grade, index) => (
+            <li key={index}>
+              {grade}
+              <button>X</button>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* <button onClick={() => numHandler(-5)} disabled={num < 6}>
         -5
